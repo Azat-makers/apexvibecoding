@@ -38,7 +38,7 @@ toggle.addEventListener('click', () => {
 const leadForm = document.querySelector('.brief-form');
 let pendingLead = null;
 addEventListener('message', event => {
-  const trusted = /^https:\/\/([a-z0-9-]+\.)?(script\.google\.com|script\.googleusercontent\.com)$/.test(event.origin);
+  const trusted = /^https:\/\/(script\.google\.com|script\.googleusercontent\.com|[a-z0-9-]+-script\.googleusercontent\.com)$/.test(event.origin);
   const result = event.data;
   if (!trusted || !pendingLead || !result || result.type !== 'apex-lead-result' || result.requestId !== pendingLead.id) return;
   clearTimeout(pendingLead.timer);
